@@ -5,7 +5,7 @@
 -->
 <html ng-app="acumuladorApp"><!--Hay que observar que aquí se inicia el ng-app-->
 	<head>
-			<title>Ayuda</title>
+			<title>busqueda</title>
 			<?php
 				/*Incluye la clase y las funciones que se encuentran en BD.php*/
 				include ('class/BD.php');
@@ -36,7 +36,7 @@
 			  		<div class='col-xs-12 col-md-4 '>
 
 
-			  		<label><h2>Buscar</h2></label>
+			  		<label><h1 style="color:green">Buscar</h1></label>
 						<input type="text" class="form-control" ng-model="text_busqueda" ng-change="buscar();" placeholder="Ingrese lo que desea buscar."><!--Caja de texto que digitamos lo que seamos buscar-->
 						<br>
 						<br>
@@ -74,3 +74,4 @@
 		
 	</body>
 </html>
+
