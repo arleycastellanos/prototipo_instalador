@@ -64,7 +64,7 @@ class BD extends Graficos
 						
 						
 						           
-						$salida.="<label for='exampleInputEmail1'><h2>SINTOMAS</h2>  </label><br>";
+						$salida.="<label for='exampleInputEmail1'><h1 style=color:green>SINTOMAS</h1>  </label><br>";
 						$salida.="<select ng-model='id_sintomas' ng-change='cargar_datos_php()' id='datos' multiple size='12' class='form-control' name='$nombre_lista' >";
 						$contador=0;
 						
@@ -113,7 +113,7 @@ class BD extends Graficos
 		        //Se busca principalmente por alias.
 		     		
 
-		     	$sql = "SELECT tb_enfermedades.enfermedad , COUNT(tb_informe.id_enfermedad) as conteo_sintomas , (SELECT COUNT(tb_informe.id_enfermedad) conteo_total FROM tb_informe where tb_enfermedades.id_enfermedad = tb_informe.id_enfermedad GROUP BY id_enfermedades) as conteo_total FROM tb_informe , tb_enfermedad WHERE tb_informe.id_enfermedad = tb_enfermedades.id_enfermedad AND tb_informe.id_sintomas in($valores) GROUP BY tb_informe.id_enfermedad";
+		     	$sql = "SELECT tb_enfermedades.enfermedad , COUNT(tb_informe.id_enfermedad) as conteo_sintomas , (SELECT COUNT(tb_informe.id_enfermedad) conteo_total FROM tb_informe where tb_enfermedades.id_enfermedad = tb_informe.id_enfermedad GROUP BY id_enfermedad) as conteo_total FROM tb_informe , tb_enfermedades WHERE tb_informe.id_enfermedad = tb_enfermedades.id_enfermedad AND tb_informe.id_sintomas in($valores) GROUP BY tb_informe.id_enfermedad";
 				//echo $sql;
 		        //LA tabla que se cree debe tener la tabla aquí requerida, y los campos requeridos abajo.
 		       
@@ -128,9 +128,9 @@ class BD extends Graficos
 		            //Mucho cuidado con esta sintaxis, hay una gran probabilidad de fallo con cualquier elemento que falte.
 		            if ($outp != "") {$outp .= ",";}
 
-		            $outp .= '{"Enfermedad":"'.$rs["enfermedad"].'",';            // <-- La tabla MySQL debe tener este campo.
-		            $outp .= '"abc":"'.$sql.'",';
+		            $outp .= '{"Enfermedad":"'.utf8_encode($rs["enfermedad"]).'",';            // <-- La tabla MySQL debe tener este campo.		            
 		            $outp .= '"conteo_sintomas":"'.$rs["conteo_sintomas"].'",';         // <-- La tabla MySQL debe tener este campo.
+		            //$outp .= '"abc":"'.$sql.'",';
 		            $outp .= '"conteo_total":"'.$rs["conteo_total"].'"}';     // <-- La tabla MySQL debe tener este campo.
 		            
 		          
