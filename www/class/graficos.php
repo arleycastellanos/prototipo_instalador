@@ -57,3 +57,5 @@ class Graficos extends Verificador
 		}
 
 }
+
+?>
