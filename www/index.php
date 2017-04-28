@@ -51,7 +51,7 @@
 						<div class='col-xs-12 col-md-6 '>
 
 					            <br>
-					            <label><h2>ENFERMEDADES</h2></label>
+					            <label><h1 style="color:green">ENFERMEDADES</h1></label>
 					            <br>
 					             
 					                
@@ -102,4 +102,5 @@
 
 	</body>
 </html>
+
 
